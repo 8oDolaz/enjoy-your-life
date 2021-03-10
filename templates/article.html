@@ -1,0 +1,20 @@
+{% extends 'index.html' %}
+
+{% block title %}
+    {{ article.title }}
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid text-justify">
+        <center><h2 style="margin-top:25px;" class="font-weight-bold">{{ article.title }}</h2></center>
+        <h3 style="margin:25px; margin-left:50px;">{{ article.disc }}</h3>
+        <p class="font-weight-normal" style="margin:25px; font-size:20px;">{{ article.text }}</p>
+        <div class="row" style="background: radial-gradient(circle at 900px 40px, #F8F8FF,#BC8F8F);">
+            {% for im in images %}
+                <div style="margin:20px;">
+                    <img src="{{ im.link }}" alt="{{ im.alt }}" class="img-thumbnail" style="width:500px;">
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

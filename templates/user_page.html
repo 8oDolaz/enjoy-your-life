@@ -1,0 +1,19 @@
+{% extends 'index.html' %}
+
+{% block title %}
+    User
+{% endblock %}
+
+{% block content %}
+    {% with messages = get_flashed_messages() %}  {# такая конструкция позовляет делать оповещения #}
+        {% if messages %}
+            {% for msg in messages %}
+                <p>{{ msg }}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <form action="" method="POST">
+        <input type="email" placeholder="Enter email" value="{{ email if email }}" name="email" />
+        <input type="submit" value="submit" />
+    </form>
+{% endblock %}

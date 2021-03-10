@@ -1,0 +1,27 @@
+{% extends 'index.html' %}
+
+{% block title %}
+    Галерея
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        {% if image|length > 0 %}
+            <div class="row">
+            {% for im in image %}
+                <div style="margin:20px; border-radius:4%;">
+                    {% if im.ar_tit != None %}
+                        <a href="/articles/{{ im.ar_tit }}">
+                            <img src="{{ im.link }}" alt="{{ im.alt }}" style="width:26vmax; border-radius:2%;">
+                        </a>
+                    {% else %}
+                        <img src="{{ im.link }}" alt="{{ im.alt }}" style="width:26vmax; border-radius:3%;">
+                    {% endif %}
+                </div>
+            {% endfor %}
+            </div>
+        {% else %}
+            <h1>Здесь пока ничего нет(</h1>
+        {% endif %}
+    </div>
+{% endblock %}

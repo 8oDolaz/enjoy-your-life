@@ -1,0 +1,40 @@
+{% extends 'index.html' %}
+
+{% block title %}
+    Articles
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        {% if articles|length > 0 %}
+            <div class="row">
+            {% for el in articles %}
+                <div class="card" style="width: 18rem; margin-top:50px; margin-left:50px; white_space:nowrap;">
+                  <img src="{{ el.pre_im }}"
+                       class="card-img-top" alt="image">
+                  <div class="card-body">
+                    <h5 class="card-title">{{ el.title }}</h5>
+                    <p class="card-text">{{ el.disc }}</p>
+                  </div>
+                  <ul class="list-group list-group-flush">
+                      {% if el.arg1 != None %}
+                        <li class="list-group-item">{{ el.arg1 }}</li>
+                      {% endif %}
+                      {% if el.arg2 != None %}
+                        <li class="list-group-item">{{ el.arg2 }}</li>
+                      {% endif %}
+                      {% if el.arg3 != None %}
+                        <li class="list-group-item">{{ el.arg3 }}</li>
+                      {% endif %}
+                  </ul>
+                  <div class="card-body">
+                    <a href="/articles/{{ el.title }}" class="card-link">Подробнее</a>
+                  </div>
+                </div>
+            {% endfor %}
+            </div>
+        {% else %}
+            <h1>Тут пока ничего нет</h1>
+        {% endif %}
+    </div>
+{% endblock %}
